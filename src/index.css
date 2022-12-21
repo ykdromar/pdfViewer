@@ -18,3 +18,51 @@ code {
 .textLayer {
   mix-blend-mode: multiply;
 }
+
+.btn {
+  background-color: white;
+  border: 0.4px solid black;
+  margin: 5px;
+  height: 30px;
+  border-radius: 8px;
+}
+.btn:hover {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+.btn:active {
+  outline: 2px solid white;
+  outline-offset: 2px;
+  transform: translateY(1px);
+}
+
+/* styling input type file  */
+
+#file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+#fileInputBtn label {
+  display: block;
+  position: relative;
+  width: 100px;
+  height: 35px;
+  border-radius: 8px;
+  background-color: white;
+  border: 0.5px solid rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#fileInputBtn:hover label:hover {
+  background-color: rgb(235, 235, 235);
+}
+#fileInputBtn:active label:active {
+  transform: translateY(1px);
+}

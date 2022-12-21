@@ -2,22 +2,39 @@
   background-color: rgb(228, 228, 228);
   position: fixed;
   bottom: 15px;
-  width: 420px;
+  /* width: 420px; */
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 40;
   border: 1px solid black;
-  border-radius: 20px;
+  border-radius: 8px;
 }
-.controlPanel button {
+.navBtn {
   margin: 3px;
-  background-color: white;
-  border: 0.4px solid black;
+  border: 0.5px solid black;
   outline: none;
-  padding: 5px;
-  border-radius: 6px;
+  border-radius: 50%;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  font-size: large;
+  font-weight: bold;
+}
+.navBtn:hover,
+.navBtn:active {
+  outline: 1px solid black;
+  outline-offset: 2px;
+}
+.navBtn:active {
+  transform: translateY(1px);
+}
+.pageInput {
+  width: 20px;
+  border: 0.5px solid black;
+  outline: none;
+  margin: 3px;
 }
 #pdf {
   z-index: 1;

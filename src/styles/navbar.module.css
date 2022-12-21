@@ -14,14 +14,14 @@
   font-weight: 900;
   color: rgb(108, 108, 108);
 }
-.fileInput::file-selector-button {
+/* .fileInput::file-selector-button {
   background-color: white;
   outline: none;
   height: 25px;
   border-radius: 6px;
-  border: 1px solid white;
+  border: 1px solid rgb(0, 0, 0);
 }
 .fileInput::file-selector-button:hover,
 .fileInput::file-selector-button:focus {
   background-color: rgb(240, 240, 240);
-}
+} */
