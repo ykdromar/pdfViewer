@@ -1,0 +1,29 @@
+.controlPanel {
+  background-color: rgb(228, 228, 228);
+  position: fixed;
+  bottom: 15px;
+  width: 420px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 40;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+.controlPanel button {
+  margin: 3px;
+  background-color: white;
+  border: 0.4px solid black;
+  outline: none;
+  padding: 5px;
+  border-radius: 6px;
+}
+#pdf {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(228, 228, 228);
+}

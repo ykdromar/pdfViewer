@@ -14,10 +14,7 @@ code {
 ::selection {
   background-color: #c6daff;
   color: transparent;
-  /* width: 2px; */
-  /* height: 200px; */
 }
 .textLayer {
   mix-blend-mode: multiply;
-  /* opacity: 1; */
 }
