@@ -4,7 +4,12 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { jsPDF } from "jspdf";
 import { useState } from "react";
 function App() {
-  const [showDownload, setShowDownload] = useState(true);
+  const [showDownload, setShowDownload] = useState(false);
+  const [file, setFile] = useState("");
+  const [page, setPage] = useState(1);
+  const [zoom, setZoom] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   var arr = [];
   function selection() {
     if (window.getSelection) {
@@ -36,6 +41,29 @@ function App() {
     doc.text(lMargin, rMargin, splitTitle);
     doc.save("a4.pdf");
   }
+  const handelFileInput = (e) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
+    setShowDownload(true);
+  };
+
+  const handelNextPage = () => {
+    if (page < totalPages) {
+      setPage(page + 1);
+    }
+  };
+  const handelPreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+  const handelZoomIn = () => {
+    setZoom(zoom + 0.2);
+  };
+  const handelZoomOut = () => {
+    setZoom(zoom - 0.2);
+  };
   return (
     <div
       className="App"
@@ -47,14 +75,26 @@ function App() {
       }}
     >
       {showDownload ? (
-        <button onClick={download}>Download</button>
-      ) : (
-        <input type="file"></input>
-      )}
+        <>
+          <div>
+            <button onClick={handelPreviousPage}>Previous Page</button>
+            <button onClick={handelNextPage}>Next Page</button>
+            <button onClick={handelZoomIn}>Zoom In</button>
+            <button onClick={handelZoomOut}>Zoom out</button>
+            <button onClick={download}>Download</button>
+          </div>
 
-      <Document file="advance node js.pdf" style={{ width: "100vw" }}>
-        <Page pageNumber={50} devicePixelRatio={7} scale={1.3} />
-      </Document>
+          <Document
+            file={file}
+            style={{ width: "100vw" }}
+            onLoadSuccess={(pdf) => setTotalPages(pdf.numPages)}
+          >
+            <Page pageNumber={page} devicePixelRatio={6} scale={zoom} />
+          </Document>
+        </>
+      ) : (
+        <input type="file" onChange={handelFileInput}></input>
+      )}
     </div>
   );
 }
