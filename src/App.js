@@ -3,27 +3,27 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { jsPDF } from "jspdf";
 import { useState } from "react";
+var arr = [];
+function selection() {
+  if (window.getSelection) {
+    let text = window.getSelection().toString();
+    console.log(text);
+    arr.push(text);
+  }
+}
+window.addEventListener("keydown", (e) => {
+  e.preventDefault();
+  if (e.key === "s") {
+    selection();
+  }
+});
+
 function App() {
   const [showDownload, setShowDownload] = useState(false);
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState();
   const [page, setPage] = useState(1);
   const [zoom, setZoom] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
-  var arr = [];
-  function selection() {
-    if (window.getSelection) {
-      let text = window.getSelection().toString();
-      console.log(text);
-      arr.push(text);
-    }
-  }
-  window.addEventListener("keydown", (e) => {
-    e.preventDefault();
-    if (e.key === "s") {
-      selection();
-    }
-  });
   function download() {
     const doc = new jsPDF();
     doc.setFontSize(10);
@@ -41,11 +41,14 @@ function App() {
     doc.text(lMargin, rMargin, splitTitle);
     doc.save("a4.pdf");
   }
-  const handelFileInput = (e) => {
+  const handelFileInput = async (e) => {
     if (e.target.files) {
+      // let url = window.URL.createObjectURL(e.target.files[0]);
+
       setFile(e.target.files[0]);
+
+      setShowDownload(true);
     }
-    setShowDownload(true);
   };
 
   const handelNextPage = () => {
@@ -74,6 +77,7 @@ function App() {
         alignItems: "center",
       }}
     >
+      {console.log(file)}
       {showDownload ? (
         <>
           <div>
@@ -87,7 +91,14 @@ function App() {
           <Document
             file={file}
             style={{ width: "100vw" }}
-            onLoadSuccess={(pdf) => setTotalPages(pdf.numPages)}
+            onLoadSuccess={(pdf) => {
+              setTotalPages(pdf.numPages);
+              console.log(pdf);
+            }}
+            onLoadError={(error) => {
+              console.log(error);
+              console.log(file);
+            }}
           >
             <Page pageNumber={page} devicePixelRatio={6} scale={zoom} />
           </Document>
