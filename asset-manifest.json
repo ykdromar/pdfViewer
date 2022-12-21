@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/pdfViewer/static/css/main.51968251.css",
-    "main.js": "/pdfViewer/static/js/main.c29a2dc7.js",
+    "main.js": "/pdfViewer/static/js/main.a6bf65bd.js",
     "static/js/498.5ce3881d.chunk.js": "/pdfViewer/static/js/498.5ce3881d.chunk.js",
     "static/js/703.167dd528.chunk.js": "/pdfViewer/static/js/703.167dd528.chunk.js",
     "static/js/478.c2e11964.chunk.js": "/pdfViewer/static/js/478.c2e11964.chunk.js",
     "static/media/pdf.worker.js": "/pdfViewer/static/media/pdf.worker.3697cc16764beea5cea7.js",
     "index.html": "/pdfViewer/index.html",
     "main.51968251.css.map": "/pdfViewer/static/css/main.51968251.css.map",
-    "main.c29a2dc7.js.map": "/pdfViewer/static/js/main.c29a2dc7.js.map",
+    "main.a6bf65bd.js.map": "/pdfViewer/static/js/main.a6bf65bd.js.map",
     "498.5ce3881d.chunk.js.map": "/pdfViewer/static/js/498.5ce3881d.chunk.js.map",
     "703.167dd528.chunk.js.map": "/pdfViewer/static/js/703.167dd528.chunk.js.map",
     "478.c2e11964.chunk.js.map": "/pdfViewer/static/js/478.c2e11964.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.51968251.css",
-    "static/js/main.c29a2dc7.js"
+    "static/js/main.a6bf65bd.js"
   ]
 }
