@@ -4,13 +4,13 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { LineWaveLoader, CircularLoader } from "./Loader";
 import { useState } from "react";
 import styles from "../styles/pdf.module.css";
-
+import useResizeObserver from "use-resize-observer";
 function PDF(props) {
   const { file } = props;
   const [page, setPage] = useState(1);
   const [zoom, setZoom] = useState(1.6);
   const [totalPages, setTotalPages] = useState(1);
-
+  const { ref, width = 100, height = 1 } = useResizeObserver();
   const handelNextPage = () => {
     if (page < totalPages) {
       setPage(page + 1);
@@ -29,7 +29,7 @@ function PDF(props) {
   };
 
   return (
-    <div id={styles.pdf}>
+    <div id={styles.pdf} ref={ref}>
       <div className={styles.controlPanel}>
         <button onClick={handelPreviousPage} className={styles.navBtn}>
           {"<<"}
@@ -68,14 +68,8 @@ function PDF(props) {
           console.log(error);
           console.log(file);
         }}
-        loading={<LineWaveLoader />}
       >
-        <Page
-          pageNumber={page}
-          devicePixelRatio={6}
-          scale={zoom}
-          loading={<LineWaveLoader />}
-        />
+        <Page pageNumber={page} devicePixelRatio={3} width={width}/>
       </Document>
     </div>
   );
