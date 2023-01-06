@@ -40,7 +40,7 @@ function download() {
   let startX = leftMargin;
   let startY = topMargin;
   doc.setFontSize(9);
-  doc.text("Notes generated from Noti", pageWidth - 30, pageHeight + 60); //adding brand
+  doc.text("Notes generated from Noti", pageWidth - 30, pageHeight + 70); //adding brand
   doc.setFontSize(12);
   for (let i = 0; i < arr.length; i++) {
     let point = arr[i];
@@ -48,7 +48,7 @@ function download() {
       doc.addPage();
       startY = topMargin;
       doc.setFontSize(9);
-      doc.text("Notes generated from Noti", pageWidth - 30, pageHeight + 60); //adding brand
+      doc.text("Notes generated from Noti", pageWidth - 30, pageHeight + 70); //adding brand
       doc.setFontSize(12);
     }
     let split = doc.splitTextToSize(`${i + 1}. ${point}`, pageWidth);
