@@ -28,17 +28,18 @@ window.addEventListener("keydown", (e) => {
 function download() {
   const doc = new jsPDF("p", "pt", "a4");
   doc.setFontSize(12);
-  let margin = 20;
+  let topMargin = 84.18;
+  let leftMargin = 59.52;
   let pageWidth = 594;
   let pageHeight = 842;
-  pageWidth -= margin * 2;
-  pageHeight -= margin * 2;
-  let startX = margin;
-  let startY = margin;
+  pageWidth -= leftMargin * 2;
+  pageHeight -= topMargin * 2;
+  let startX = leftMargin;
+  let startY = topMargin;
   for (let point of arr) {
     if (startY >= pageHeight) {
       doc.addPage();
-      startY = margin;
+      startY = topMargin;
     }
     let split = doc.splitTextToSize(point, pageWidth);
     doc.text(split, startX, startY);
