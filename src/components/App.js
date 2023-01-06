@@ -27,21 +27,31 @@ window.addEventListener("keydown", (e) => {
 // function to make and download pdf
 function download() {
   const doc = new jsPDF("p", "pt", "a4");
-  doc.setFontSize(12);
+  doc.setFont("Times-Roman", "bold");
+  doc.setFontSize(20);
+  doc.text("Notes", 59.52, 60);
+  doc.setFont("Times-Roman", "normal");
   let topMargin = 84.18;
   let leftMargin = 59.52;
-  let pageWidth = 594;
+  let pageWidth = 595;
   let pageHeight = 842;
   pageWidth -= leftMargin * 2;
-  pageHeight -= topMargin * 2;
+  pageHeight -= topMargin;
   let startX = leftMargin;
   let startY = topMargin;
-  for (let point of arr) {
+  doc.setFontSize(9);
+  doc.text("Notes generated from Noti", pageWidth - 30, pageHeight + 60); //adding brand
+  doc.setFontSize(12);
+  for (let i = 0; i < arr.length; i++) {
+    let point = arr[i];
     if (startY >= pageHeight) {
       doc.addPage();
       startY = topMargin;
+      doc.setFontSize(9);
+      doc.text("Notes generated from Noti", pageWidth - 30, pageHeight + 60); //adding brand
+      doc.setFontSize(12);
     }
-    let split = doc.splitTextToSize(point, pageWidth);
+    let split = doc.splitTextToSize(`${i + 1}. ${point}`, pageWidth);
     doc.text(split, startX, startY);
     startY += doc.getTextDimensions(split).h;
   }
