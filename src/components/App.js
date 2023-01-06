@@ -7,8 +7,13 @@ import { jsPDF } from "jspdf";
 var arr = []; // array to collect selcted text
 // function to get text selected
 function selection() {
-  if (window.getSelection) {
-    let text = window.getSelection().toString();
+  if (document.getSelection) {
+    let text = document
+      .getSelection()
+      .toString()
+      .trim()
+      .replace(/\n/g, " ")
+      .replace(/\\n/g, " ");
     console.log(text);
     arr.push(text);
   }
@@ -21,21 +26,26 @@ window.addEventListener("keydown", (e) => {
 });
 // function to make and download pdf
 function download() {
-  const doc = new jsPDF();
-  doc.setFontSize(10);
+  const doc = new jsPDF("p", "pt", "a4");
+  doc.setFontSize(12);
+  let margin = 20;
+  let pageWidth = 594;
+  let pageHeight = 842;
+  pageWidth -= margin * 2;
+  pageHeight -= margin * 2;
+  let startX = margin;
+  let startY = margin;
+  for (let point of arr) {
+    if (startY >= pageHeight) {
+      doc.addPage();
+      startY = margin;
+    }
+    let split = doc.splitTextToSize(point, pageWidth);
+    doc.text(split, startX, startY);
+    startY += doc.getTextDimensions(split).h;
+  }
 
-  var lMargin = 30; //left margin in mm
-  var rMargin = 15; //right margin in mm
-  var pdfInMM = 210; // width of A4 in mm
-  var splitTitle = doc.splitTextToSize(
-    arr.map((e, index) => {
-      return `${index + 1}.${e}`;
-    }),
-    pdfInMM - lMargin - rMargin
-  );
-
-  doc.text(lMargin, rMargin, splitTitle);
-  doc.save("a4.pdf");
+  doc.save(`Noti-${Date.now()}.pdf`);
 }
 function App() {
   const [showPDF, setShowPDF] = useState(false);
