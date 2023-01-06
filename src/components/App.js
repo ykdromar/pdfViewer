@@ -14,7 +14,7 @@ function selection() {
       .trim()
       .replace(/\n/g, " ")
       .replace(/\\n/g, " ");
-    console.log(text);
+    // console.log(text);
     arr.push(text);
   }
 }
