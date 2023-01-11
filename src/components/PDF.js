@@ -8,7 +8,7 @@ import useResizeObserver from "use-resize-observer";
 function PDF(props) {
   const { file } = props;
   const [page, setPage] = useState(1);
-  const [zoom, setZoom] = useState(1.6);
+  const [zoom, setZoom] = useState(70);
   const [totalPages, setTotalPages] = useState(1);
   const { ref, width = 0.02, height = 1 } = useResizeObserver();
   const handelNextPage = () => {
@@ -22,16 +22,18 @@ function PDF(props) {
     }
   };
   const handelZoomIn = () => {
-    setZoom(zoom + 0.2);
+    setZoom(zoom + 5);
+    console.log(zoom);
   };
   const handelZoomOut = () => {
-    setZoom(zoom - 0.2);
+    setZoom(zoom - 5);
+    console.log(zoom);
   };
 
   return (
-    <div id={styles.pdf}>
-      <div className={styles.refDiv} ref={ref}></div>
-      <div className={styles.controlPanel}>
+    <div id={styles.pdf} ref={ref}>
+      {/* <div className={styles.refDiv} ref={ref}></div> */}
+      {/* <div className={styles.controlPanel}>
         <button onClick={handelPreviousPage} className={styles.navBtn}>
           {"<<"}
         </button>
@@ -56,7 +58,7 @@ function PDF(props) {
         <button onClick={handelZoomOut} className={styles.navBtn}>
           {"-"}
         </button>
-      </div>
+      </div> */}
       <Document
         className="document"
         file={file}
@@ -69,7 +71,16 @@ function PDF(props) {
           console.log(file);
         }}
       >
-        <Page pageNumber={page} devicePixelRatio={3} width={width} />
+        {Array.from(new Array(totalPages), (el, index) => (
+          <Page
+            className={page}
+            key={`page_${index + 1}`}
+            pageNumber={index + 1}
+            devicePixelRatio={3}
+            width={width}
+          />
+        ))}
+        {/* <Page pageNumber={page} devicePixelRatio={3} width={width} /> */}
       </Document>
     </div>
   );

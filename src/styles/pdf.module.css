@@ -42,10 +42,10 @@
   flex-direction: column;
   align-items: center;
   width: 70%;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-
-.refDiv {
-  width: 100%;
   min-width: 350px;
 }
+
+/* .refDiv {
+  width: 100%;
+  min-width: 350px;
+} */

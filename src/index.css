@@ -66,3 +66,9 @@ code {
 #fileInputBtn:active label:active {
   transform: translateY(1px);
 }
+
+.react-pdf__Page {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
