@@ -41,6 +41,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 70%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.refDiv {
   width: 100%;
-  background-color: rgb(228, 228, 228);
+  min-width: 350px;
 }

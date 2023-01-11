@@ -10,7 +10,7 @@ function PDF(props) {
   const [page, setPage] = useState(1);
   const [zoom, setZoom] = useState(1.6);
   const [totalPages, setTotalPages] = useState(1);
-  const { ref, width = 100, height = 1 } = useResizeObserver();
+  const { ref, width = 0.02, height = 1 } = useResizeObserver();
   const handelNextPage = () => {
     if (page < totalPages) {
       setPage(page + 1);
@@ -29,7 +29,8 @@ function PDF(props) {
   };
 
   return (
-    <div id={styles.pdf} ref={ref}>
+    <div id={styles.pdf}>
+      <div className={styles.refDiv} ref={ref}></div>
       <div className={styles.controlPanel}>
         <button onClick={handelPreviousPage} className={styles.navBtn}>
           {"<<"}
@@ -59,7 +60,6 @@ function PDF(props) {
       <Document
         className="document"
         file={file}
-        style={{ width: "100vw" }}
         onLoadSuccess={(pdf) => {
           setTotalPages(pdf.numPages);
           console.log(pdf);
@@ -69,7 +69,7 @@ function PDF(props) {
           console.log(file);
         }}
       >
-        <Page pageNumber={page} devicePixelRatio={3} width={width}/>
+        <Page pageNumber={page} devicePixelRatio={3} width={width} />
       </Document>
     </div>
   );
