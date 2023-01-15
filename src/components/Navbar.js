@@ -3,7 +3,7 @@ function Navbar(props) {
   const { showPDF, download } = props;
   return (
     <div className={styles.navbar}>
-      <a className={styles.brandName} href="/">
+      <a className={styles.brandName} href="/pdfViewer">
         NOTI
       </a>
       {showPDF && (
