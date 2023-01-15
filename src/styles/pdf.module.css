@@ -44,10 +44,6 @@
   width: 70%;
   min-width: 350px;
 }
-.Doc::selection {
-  background-color: #c6daff;
-  color: transparent;
-}
 /* .refDiv {
   width: 100%;
   min-width: 350px;

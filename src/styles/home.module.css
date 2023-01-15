@@ -2,13 +2,16 @@
   background-color: rgb(1, 7, 51);
   width: 100%;
   color: white;
-  height: 91.2vh;
+  height: 93vh;
   box-sizing: border-box;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .leftDiv {
   width: 400px;

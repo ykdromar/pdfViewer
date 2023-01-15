@@ -17,6 +17,11 @@ code {
   mix-blend-mode: multiply;
 }
 
+::selection {
+  background-color: #c6daff;
+  color: transparent;
+}
+
 .btn {
   background-color: white;
   border: 0.4px solid black;
