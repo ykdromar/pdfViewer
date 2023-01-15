@@ -2,7 +2,7 @@
   background-color: rgb(1, 7, 51);
   width: 100%;
   color: white;
-  height: 93vh;
+  height: 100vh;
   box-sizing: border-box;
   padding: 20px;
   display: flex;
@@ -16,6 +16,7 @@
 .leftDiv {
   width: 400px;
   height: 400px;
+  overflow: hidden;
 }
 .rightDiv {
   width: 400px;
