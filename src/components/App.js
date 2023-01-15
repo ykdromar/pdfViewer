@@ -3,7 +3,7 @@ import styles from "../styles/app.module.css";
 import PDF from "./PDF";
 import Navbar from "./Navbar";
 import { jsPDF } from "jspdf";
-
+import Home from "../pages/home";
 var arr = []; // array to collect selcted text
 // function to get text selected
 function selection() {
@@ -69,11 +69,8 @@ function App() {
   };
   return (
     <div className={styles.App}>
-      <Navbar
-        handelFileInput={handelFileInput}
-        download={download}
-        showPDF={showPDF}
-      />
+      <Navbar download={download} showPDF={showPDF} />
+      {!showPDF && <Home handelFileInput={handelFileInput} />}
       {showPDF && <PDF file={file} />}
     </div>
   );

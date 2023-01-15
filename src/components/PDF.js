@@ -60,7 +60,7 @@ function PDF(props) {
         </button>
       </div> */}
       <Document
-        className="document"
+        className={styles.Doc}
         file={file}
         onLoadSuccess={(pdf) => {
           setTotalPages(pdf.numPages);

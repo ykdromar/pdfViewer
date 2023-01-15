@@ -5,16 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Open Sans", sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-::selection {
-  background-color: #c6daff;
-  color: transparent;
-}
+
 .textLayer {
   mix-blend-mode: multiply;
 }
