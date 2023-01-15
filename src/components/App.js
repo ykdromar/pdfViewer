@@ -69,9 +69,19 @@ function App() {
   };
   return (
     <div className={styles.App}>
-      <Navbar download={download} showPDF={showPDF} />
+      {/* <Navbar download={download} showPDF={showPDF} /> */}
       {!showPDF && <Home handelFileInput={handelFileInput} />}
       {showPDF && <PDF file={file} />}
+      {showPDF && (
+        <button
+          className={styles.downloadBtn}
+          onClick={() => {
+            download();
+          }}
+        >
+          ⬇️
+        </button>
+      )}
     </div>
   );
 }
